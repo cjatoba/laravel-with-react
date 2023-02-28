@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CourseController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -26,3 +27,8 @@ Route::get('/programming-languages', function () {
         ]
     ]);
 });
+
+Route::get('/courses/longer', [CourseController::class, 'getLongerCourses']);
+Route::get('/courses/shorter', [CourseController::class, 'getShorterCourses']);
+Route::get('/courses', [CourseController::class, 'getAll']);
+Route::get('/courses/{name}', [CourseController::class, 'getCoursesByName']);
