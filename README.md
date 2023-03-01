@@ -1,19 +1,18 @@
-Projeto de avaliação técnica Life.
-
-## Passos para execução do projeto:
-
-* Obs.: É necessário que o docker esteja instalado. O projeto utiliza o Laravel Sail.
-
-Acessar o diretório do projeto via terminal e executar os comandos abaixo:
+## Passos para iniciar o projeto:
 
 ```shell
-docker run --rm --pull=always -v "$(pwd)":/opt -w /opt laravelsail/php82-composer:latest bash -c 'composer install'
+cp .env.example .env
 ```
 
-```shell
-./vendor/bin/sail up -d
-```
+Alterar a chave LOCAL_USER no arquivo .env para o nome do usuário local
+Adicionar uma senha na chave DB_PASSWORD no arquivo .env
+
 
 ```shell
-./vendor/bin/sail artisan migrate
+docker-compose up -d
+docker-compose exec app
+composer install
+php artisan key:generate
 ```
+
+Acessar o projeto na porta 8989 `http://localhost:8989`
